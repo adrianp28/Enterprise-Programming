@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "scripts": {
+    "dev": "webpack -d",
+    "dist": "webpack -p"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0",
+    "bootstrap-social": "5.1.1",
+    "jquery": "3.3.1",
+    "popper.js": "1.12.9",
+    "font-awesome": "4.7.0",
+    "font-awesome-webpack": "0.0.5-beta.2"
+  },
+  "devDependencies": {
+    "css-loader": "0.28.9",
+    "file-loader": "^0.8.1",
+    "style-loader": "0.20.1",
+    "url-loader": "^0.5.5",
+    "webpack": "^3.10.0",
+    "sass-loader": "^6.0.6",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5"
+  }
+}

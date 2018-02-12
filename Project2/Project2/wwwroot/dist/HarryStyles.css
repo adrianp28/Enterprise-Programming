@@ -1,0 +1,7 @@
+﻿body {
+    background-color: #0288D1;
+}
+nav > ul > li > a:hover {
+    border-bottom: 2px solid #F117B4;
+    text-decoration: none;
+}
