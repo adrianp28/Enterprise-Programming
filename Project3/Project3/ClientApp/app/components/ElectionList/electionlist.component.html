@@ -1,0 +1,32 @@
+<!--{{elections | json}}-->
+<div class="container">
+    <div class="col-12 text-center">
+        <span style="font-family:Calibri; font-size:xx-large; font-weight:bold;">Upcoming Elections</span>
+        <hr />
+    </div>
+    <div class="col-12">
+        <div class="alert alert-danger" *ngIf="!elections">
+            No results found! Try fine-tuning your search.
+        </div>
+        <div class="card" *ngIf="elections">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Day</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let election of elections">
+                    <tr>
+                        <td>{{election.id}}</td>
+                        <td>{{election.name}}</td>
+                        <td>{{election.electionDay}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

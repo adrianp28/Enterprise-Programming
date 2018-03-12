@@ -1,0 +1,59 @@
+<h1>Search</h1>
+<form #searchForm="ngForm" (ngSubmit)="search()">
+    <span style="font-family:Calibri; font-size:X-Large">Type of Search</span>
+    <select class="form-control" [(ngModel)]="type" name="searchType" #searchType="ngModel" required>
+        <option selected="selected">Reps</option>
+        <option>Elections</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="!searchType.valid">
+        You must specify a type of search
+    </div>
+    <span style="font-family:Calibri; font-size:X-Large">Address</span>
+    <input type="text" [(ngModel)]="addressSearch" name="searchStringInput" #searchStringInput="ngModel" class="form-control" required />
+    <div class="alert alert-danger" *ngIf="!searchStringInput.valid">
+        You must specify a search string
+    </div>
+    <button type="submit" [disabled]="!searchForm.valid" class="btn">Search</button>
+
+</form>
+<div class="container">
+    <div class="col-12 text-center" *ngIf="elects || address">
+        <span style="font-family:Calibri; font-size:xx-large; font-weight:bold;">Results</span>
+        <hr />
+    </div>
+    <br />
+    <div class="alert alert-danger" *ngIf="!elects && !address">
+        No results found! Try fine-tuning your search.
+    </div>
+    <div class="col-12">
+        <div class="card" *ngIf="address">
+            <a href="RepInfo/{{address.line1}} {{address.city}} {{address.state}} {{address.zip}}">{{address.line1}} {{address.city}} {{address.state}} {{address.zip}}</a>
+        </div>
+        <div>
+            <table class="table table-hover table-bordered" *ngIf="elects">
+                <thead>
+                    <tr>
+                        <th>
+                            Election ID
+                        </th>
+                        <th>
+                            Name
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {{elects.id}}
+                        </td>
+                        <td>
+                            <a href="UpcomingElections/{{address2.line1}} {{address2.city}} {{address2.state}} {{address2.zip}}/{{elects.id}}">{{elects.name}}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

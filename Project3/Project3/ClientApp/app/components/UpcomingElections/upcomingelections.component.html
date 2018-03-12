@@ -1,0 +1,171 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <span style="font-family:Calibri; font-size: X-Large" class="text-center" *ngIf="elect">
+                Election Info for: {{elect.name}}
+                <br />
+                Date: {{elect.electionDay}}
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <br />
+            <span style="font-family:Calibri; font-size: Large" class="text-center" *ngIf="elect">
+                Polling Locations
+
+            </span>
+            <hr />
+            <div class="alert alert-danger" *ngIf="!pollingLocations">
+                No results found!
+            </div>
+            <table class="table table-bordered table-hover" *ngIf="pollingLocations">
+                <thead>
+                    <tr>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Hours
+                        </th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="pollingLocations">
+                    <tr *ngFor="let location of pollingLocations">
+                        <td>
+                            <a href="https://www.google.com/maps/search/?api=1&query={{location.address.line1}}+{{location.address.city}}+{{location.address.state}}+{{location.address.zip}}" target="_blank">
+                                {{location.address.locationName}}
+                            </a>
+
+                        </td>
+                        <td>
+                            {{location.pollingHours}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <br />
+            <span style="font-family:Calibri; font-size: Large" class="text-center" *ngIf="elect">
+                Early Voting Locations
+
+            </span>
+            <hr />
+            <div class="alert alert-danger" *ngIf="!earlyVote">
+                No results found!
+            </div>
+            <table class="table table-bordered table-hover" *ngIf="earlyVote">
+                <thead>
+                    <tr>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Hours
+                        </th>
+                        <th>
+                            Start Date
+                        </th>
+                        <th>
+                            End Date
+                        </th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="earlyVote">
+                    <tr *ngFor="let early of earlyVote">
+                        <td>
+                            <a href="https://www.google.com/maps/search/?api=1&query={{early.address.line1}}+{{early.address.city}}+{{early.address.state}}+{{early.address.zip}}" target="_blank">
+                                {{early.name}}
+                            </a>
+
+                        </td>
+                        <td>
+                            {{early.pollingHours}}
+                        </td>
+                        <td>
+                            {{early.startDate}}
+                        </td>
+                        <td>
+                            {{early.endDate}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="!contest">
+        No contest information!
+    </div>
+    <div class="row" *ngIf="contest">
+        <div class="col-12" *ngFor="let cont of contest">
+            <span style="font-family:Calibri; font-size:x-large">Candidates for {{cont.office}}</span>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Candidate
+                        </th>
+                        <th>
+                            Website
+                        </th>
+                        <th>
+                            Party
+                        </th>
+                        <th>
+                            Social Media
+                        </th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let subItem of cont['candidates']">
+                    <tr>
+                        <td>
+                            {{subItem.name}}
+                        </td>
+                        <td>
+                            <a href="{{subItem.candidateUrl}}">{{subItem.candidateUrl}}</a>
+                        </td>
+                        <td>
+                            {{subItem.party}}
+                        </td>
+                        <td>
+                            <table>
+                                <tr *ngFor="let subItem2 of subItem['channels']">
+                                    <td>
+                                        <div [ngSwitch]="subItem2.type">
+                                            <div *ngSwitchCase="'GooglePlus'">
+                                                <a class="btn btn-block btn-social btn-google" href="https://plus.google.com/u/0/{{subItem2.id}}" target="_blank">
+                                                    <span class="fa fa-google-plus"></span> <span style="color:white;">Follow on Google Plus</span>
+                                                </a>
+                                            </div>
+                                            <div *ngSwitchCase="'Facebook'">
+                                                <a class="btn btn-block btn-social btn-facebook" href="https://www.facebook.com/{{subItem2.id}}" target="_blank">
+                                                    <span class="fa fa-facebook"></span> <span style="color:white;">Follow on Facebook</span>
+                                                </a>
+                                            </div>
+                                            <div *ngSwitchCase="'Twitter'">
+
+                                                <a class="btn btn-block btn-social btn-twitter" href="https://twitter.com/{{subItem2.id}}" target="_blank">
+                                                    <span class="fa fa-twitter"></span> <span style="color:white;">Follow on Twitter</span>
+                                                </a>
+                                            </div>
+                                            <div *ngSwitchCase="'YouTube'">
+                                                <a class="btn btn-block btn-social btn-pinterest" href="https://www.youtube.com/user/{{subItem2.id}}" target="_blank">
+                                                    <span class="fa fa-youtube-play"></span> <span style="color:white;">Follow on Youtube</span>
+                                                </a>
+                                            </div>
+                                            <div *ngSwitchDefault>
+                                                {{subItem.type}}
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

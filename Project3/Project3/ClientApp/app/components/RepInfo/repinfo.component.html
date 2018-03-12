@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="col-12 text-center">
+        <span style="font-family:Calibri; font-size:xx-large; font-weight:bold;">Representitives</span>
+        <hr />
+    </div>
+    <div class="col-12">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Photo
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Position
+                    </th>
+                    <th>
+                        Party
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        Address
+                    </th>
+
+                    <th>
+                        Social Media
+                    </th>
+                    <th>
+                        Website
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody *ngIf="repInfo">
+                <tr *ngFor="let rep of repInfo">
+
+                    <td>
+                        <img src="{{rep.photoUrl}}" width="60px" height="60px" />
+                    </td>
+                    <td>{{rep.name}}</td>
+                    <td>{{rep.office}}</td>
+                    <td>{{rep.party}}</td>
+                    <td>{{rep.phones[0]}}</td>
+                    <td>
+                        <span *ngFor="let subItem of rep['address']"> {{subItem.line1}} {{subItem.line2}}</span>
+                    </td>
+                    <td>
+                        <table>
+                            <tr *ngFor="let subItem of rep['channels']">
+                                <td>
+                                    <div [ngSwitch]="subItem.type">
+                                        <div *ngSwitchCase="'GooglePlus'">
+                                            <a class="btn btn-block btn-social btn-google" href="https://plus.google.com/u/0/{{subItem.id}}" target="_blank">
+                                                <span class="fa fa-google-plus"></span> <span style="color:white;">Follow on Google Plus</span>
+                                            </a>
+                                        </div>
+                                        <div *ngSwitchCase="'Facebook'">
+                                            <a class="btn btn-block btn-social btn-facebook" href="https://www.facebook.com/{{subItem.id}}" target="_blank">
+                                                <span class="fa fa-facebook"></span> <span style="color:white;">Follow on Facebook</span>
+                                            </a>
+                                        </div>
+                                        <div *ngSwitchCase="'Twitter'">
+
+                                            <a class="btn btn-block btn-social btn-twitter" href="https://twitter.com/{{subItem.id}}" target="_blank">
+                                                <span class="fa fa-twitter"></span> <span style="color:white;">Follow on Twitter</span>
+                                            </a>
+                                        </div>
+                                        <div *ngSwitchCase="'YouTube'">
+                                            <a class="btn btn-block btn-social btn-pinterest" href="https://www.youtube.com/user/{{subItem.id}}" target="_blank">
+                                                <span class="fa fa-youtube-play"></span> <span style="color:white;">Follow on Youtube</span>
+                                            </a>
+                                        </div>
+                                        <div *ngSwitchDefault>
+                                            {{subItem.type}}
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <a href="{{rep.urls}}">{{rep.urls}}</a>
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
