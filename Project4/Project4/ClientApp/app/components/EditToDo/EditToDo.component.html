@@ -1,0 +1,33 @@
+<form *ngIf="item" (ngSubmit)="updateToDo()" #searchForm="ngForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <span style="font-family:Calibri; font-size:x-large">To-Do Name</span>
+                <input class="form-control" [(ngModel)]="nameTODO" value="{{item.name}}" name="nameInput" #nameInput="ngModel"  />
+            </div>
+            <div class="col-6">
+                <span style="font-family:Calibri; font-size:x-large">Due Date</span>
+                <input type="text" class="form-control" [(ngModel)]="DueDate" value="{{item.date}}" name="dateInput" #dateInput="ngModel" />
+            </div>
+        </div>
+        <div>
+            <div class="col-12">
+                <span style="font-family:Calibri; font-size:x-large">Description</span>
+                <br />
+                <textarea style="width:100%" rows="6" class="form-control" [(ngModel)]="description" name="desInput" #desInput="ngModel" >{{item.description}}</textarea>
+                <br />
+                <button type="submit" class="form-control">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</form>
+<form *ngIf="item" (ngSubmit)="deleteToDO()">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="form-control">Delete Item</button>
+            </div>
+        </div>
+    </div>
+            
+</form>
