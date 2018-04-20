@@ -1,27 +1,38 @@
 <form *ngIf="item" (ngSubmit)="updateToDo()" #searchForm="ngForm">
     <div class="container">
         <div class="row">
-            <div class="col-6">
-                <span style="font-family:Calibri; font-size:x-large">To-Do Name</span>
-                <input class="form-control" [(ngModel)]="nameTODO" value="{{item.name}}" name="nameInput" #nameInput="ngModel"  />
+            <div class="col-4">
+                <span style="font-family:Calibri; font-size:x-large">To-Do Name: {{item.name}}</span>
+                <input class="form-control" [(ngModel)]="nameTODO" value="{{item.name}}" name="nameInput" #nameInput="ngModel" />
             </div>
-            <div class="col-6">
-                <span style="font-family:Calibri; font-size:x-large">Due Date</span>
-                <input type="text" class="form-control" [(ngModel)]="DueDate" value="{{item.date}}" name="dateInput" #dateInput="ngModel" />
+            <div class="col-4">
+                <span style="font-family:Calibri; font-size:x-large">Due Date: {{item.date}}</span>
+                <input type="datetime-local" class="form-control" [(ngModel)]="DueDate" value="{{item.date}}" name="dateInput" #dateInput="ngModel" />
+            </div>
+            <div class="col-4">
+                <span style="font-family:Calibri; font-size:x-large">Tag: {{item.tag}}</span>
+                <input type="text" class="form-control" [(ngModel)]="Tag" name="tagInput" #tagInput="ngModel" />
             </div>
         </div>
         <div>
             <div class="col-12">
-                <span style="font-family:Calibri; font-size:x-large">Description</span>
+                <span style="font-family:Calibri; font-size:x-large">Description: {{item.description}}</span>
                 <br />
-                <textarea style="width:100%" rows="6" class="form-control" [(ngModel)]="description" name="desInput" #desInput="ngModel" >{{item.description}}</textarea>
+                <input style="width:100%" value="{{item.description}}" class="form-control" [(ngModel)]="description" name="desInput" #desInput="ngModel" />
+                <br />
+                <span style="font-family:Calibri; font-size:x-large">Status: {{item.status}}</span>
+                <br />
+                <select class="form-control" [(ngModel)]="status" name="statusSelect" #statusSelect="ngModel" required>
+                    <option value="Active" selected>Active</option>
+                    <option value="Completed">Completed</option>
+                </select>
                 <br />
                 <button type="submit" class="form-control">Save Changes</button>
             </div>
         </div>
     </div>
 </form>
-<form *ngIf="item" (ngSubmit)="deleteToDO()">
+<!--<form *ngIf="item" (ngSubmit)="deleteToDO()">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -30,4 +41,4 @@
         </div>
     </div>
             
-</form>
+</form>-->

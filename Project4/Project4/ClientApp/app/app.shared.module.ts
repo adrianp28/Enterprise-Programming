@@ -13,6 +13,8 @@ import { ToDoItemsComponent } from './components/ToDoItems/ToDoItemsComponent.co
 import { ToDoItemsService } from './components/ToDoItems/ToDoItemsService.service';
 import { EditToDoComponent } from './components/EditToDo/EditToDoComponent.component';
 import { AddItemComponent } from './components/AddItem/AddItem.component';
+import { CompletedComponent } from './components/completed/CompletedComponent.component';
+import { SettingsComponent } from './components/Settings/SettingsComponent.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +25,9 @@ import { AddItemComponent } from './components/AddItem/AddItem.component';
         HomeComponent,
         ToDoItemsComponent,
         EditToDoComponent,
-        AddItemComponent
+        AddItemComponent,
+        CompletedComponent,
+        SettingsComponent
     ],
 
     imports: [
@@ -37,7 +41,9 @@ import { AddItemComponent } from './components/AddItem/AddItem.component';
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'ToDoList', component: ToDoItemsComponent },
             { path: 'Edit/:ID', component: EditToDoComponent },
+            { path: 'Settings/:ID', component: SettingsComponent },
             { path: 'AddItem', component: AddItemComponent },
+            { path: 'completed', component: CompletedComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],

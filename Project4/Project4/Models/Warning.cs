@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Project4.Models
 {
-    public class Tags
+    public class Warning
     {
         public int ID { get; set; }
-        public int todoID { get; set; }
-        public string tagName { get; set; }
+        public int hours { get; set; }
+        public int days { get; set; }
     }
 }

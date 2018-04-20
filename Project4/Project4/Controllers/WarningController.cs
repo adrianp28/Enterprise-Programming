@@ -12,11 +12,11 @@ using Project4.Models;
 namespace Project4.Controllers
 {
     [Route("api/[controller]")]
-    public class ToDoController : Controller
+    public class WarningController : Controller
     {
         private ToDoContext dbContext;
 
-        public ToDoController(ToDoContext todoDBContext)
+        public WarningController(ToDoContext todoDBContext)
         {
             this.dbContext = todoDBContext;
         }
@@ -25,40 +25,24 @@ namespace Project4.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var todo = await this.dbContext.toDo.ToListAsync();
+            var warning = await this.dbContext.warning.ToListAsync();
             //var todo2 = await this.dbContext.toDo.FromSql("SELECT * FROM dbo.ToDo").OrderByDescending(x => x.Name).ToListAsync();
-            return new ObjectResult(todo);
+            return new ObjectResult(warning);
         }
-        //// GET: api/<controller>
-        //[HttpGet]
-        //public async Task<IActionResult> Get([FromBody]string type)
-        //{
-        //    //var todo = null;
-        //    if(type=="desc")
-        //    {
-        //        var todo = await this.dbContext.toDo.FromSql("SELECT * FROM dbo.ToDo").OrderByDescending(x => x.Name).ToListAsync();
-        //        return new ObjectResult(todo);
-        //    }
-        //    else
-        //    {
-        //        var todo = await this.dbContext.toDo.FromSql("SELECT * FROM dbo.ToDo").OrderBy(x => x.Name).ToListAsync();
-        //        return new ObjectResult(todo);
-        //    }
-            
-        //}
+        
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try
             {
-                var todo = this.dbContext.toDo.FirstOrDefault(p => p.ID == id);
-                if (todo == null)
+                var warning = this.dbContext.warning.FirstOrDefault(p => p.ID == id);
+                if (warning == null)
                 {
                     return StatusCode(StatusCodes.Status404NotFound);
                 }
-                return new ObjectResult(todo);
-                
+                return new ObjectResult(warning);
+
             }
             catch (Exception e)
             {
@@ -68,7 +52,7 @@ namespace Project4.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public IActionResult Post([FromBody]ToDo value)
+        public IActionResult Post([FromBody]Warning value)
         {
             this.dbContext.Add(value);
             this.dbContext.SaveChanges();
@@ -77,21 +61,18 @@ namespace Project4.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]ToDo value)
+        public IActionResult Put(int id, [FromBody]Warning value)
         {
             try
             {
-                var todo = this.dbContext.toDo.FirstOrDefault(p => p.ID == id);
-                if (todo == null)
+                var warning = this.dbContext.warning.FirstOrDefault(p => p.ID == id);
+                if (warning == null)
                 {
                     return StatusCode(StatusCodes.Status404NotFound);
                 }
-                todo.Name = value.Name;
-                todo.Date = value.Date;
-                todo.Description = value.Description;
-                todo.Tag = value.Tag;
-                todo.Status = value.Status;
-                this.dbContext.toDo.Update(todo);
+                warning.days = value.days;
+                warning.hours = value.hours;
+                this.dbContext.warning.Update(warning);
                 this.dbContext.SaveChanges();
                 return StatusCode(StatusCodes.Status202Accepted);
             }
@@ -107,13 +88,13 @@ namespace Project4.Controllers
         {
             try
             {
-                var todo = this.dbContext.toDo.FirstOrDefault(p => p.ID == id);
-                if (todo == null)
+                var warning = this.dbContext.warning.FirstOrDefault(p => p.ID == id);
+                if (warning == null)
                 {
                     return StatusCode(StatusCodes.Status404NotFound);
                 }
 
-                this.dbContext.toDo.Remove(todo);
+                this.dbContext.warning.Remove(warning);
                 this.dbContext.SaveChanges();
                 return StatusCode(StatusCodes.Status200OK);
             }

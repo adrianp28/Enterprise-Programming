@@ -3,5 +3,6 @@
     Name: string,
     Description: string,
     Date: Date,
-    Tag: string
+    Tag: string,
+    Status: string
 }

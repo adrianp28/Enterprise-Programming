@@ -1,0 +1,19 @@
+<form (ngSubmit)="updateSettings()" #searchForm="ngForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <span style="font-family:Calibri; font-size:large;" *ngIf="warning">Days: {{warning[0].days}}</span>
+                <input [(ngModel)]="days" name="daysInput" #daysInput="ngModel" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span style="font-family:Calibri; font-size:large;" *ngIf="warning">Hours: {{warning[0].hours}}</span>
+                <input type="text" [(ngModel)]="hours" name="hoursInput" #hoursInput="ngModel" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="form-control">Save Settings</button>
+            </div>
+        </div>
+    </div>
+</form>

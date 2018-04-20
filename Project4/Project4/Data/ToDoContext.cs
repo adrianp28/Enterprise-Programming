@@ -14,9 +14,11 @@ namespace Project4.Data
 
         }
         public DbSet<ToDo> toDo { get; set; }
+        public DbSet<Warning> warning { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ToDo>().ToTable("ToDo");
+            modelBuilder.Entity<Warning>().ToTable("Warning");
         }
     }
 }

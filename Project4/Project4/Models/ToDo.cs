@@ -12,5 +12,6 @@ namespace Project4.Models
         public string Description { get; set; }
         public DateTime Date { get; set; }
         public string Tag { get; set; }
+        public string Status { get; set; }
     }
 }
