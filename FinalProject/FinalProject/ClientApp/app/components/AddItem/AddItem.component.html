@@ -1,0 +1,27 @@
+<form (ngSubmit)="addToDo()" #searchForm="ngForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <span style="font-family:Calibri; font-size:x-large">To-Do Name</span>
+                <input class="form-control" [(ngModel)]="nameTODO" name="nameInput" #nameInput="ngModel" />
+            </div>
+            <div class="col-4">
+                <span style="font-family:Calibri; font-size:x-large">Due Date</span>
+                <input type="datetime-local" class="form-control" [(ngModel)]="DueDate" name="dateInput" #dateInput="ngModel" />
+            </div>
+            <div class="col-4">
+                <span style="font-family:Calibri; font-size:x-large">Tag</span>
+                <input type="text" class="form-control" [(ngModel)]="Tag"name="tagInput" #tagInput="ngModel" />
+            </div>
+        </div>
+        <div>
+            <div class="col-12">
+                <span style="font-family:Calibri; font-size:x-large">Description</span>
+                <br />
+                <textarea style="width:100%" rows="6" class="form-control" [(ngModel)]="description" name="desInput" #desInput="ngModel"></textarea>
+                <br />
+                <button type="submit" class="form-control">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</form>

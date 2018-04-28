@@ -1,0 +1,87 @@
+<style tye="text/css">
+    li:hover, li:focus {
+        border-bottom: solid;
+        border-bottom-color: white;
+        color: grey !important; /*Change rollover cell color here*/
+    }
+
+    .labelTexts {
+        font-family: Calibri;
+        font-size: Large;
+    }
+
+    .mydiv {
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        width: 30em;
+        height: 35em;
+        margin-top: -9em; /*set to a negative number 1/2 of your height*/
+        margin-left: -15em; /*set to a negative number 1/2 of your width*/
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid #dedede;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    input {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    td {
+        vertical-align: middle;
+        text-align: center;
+    }
+</style>
+<form (ngSubmit)="siginIn()" #loginForm="ngForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-4">
+                <div class="mydiv">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td colspan="3">
+                                <span style="font-family:Calibri; font-size: X-Large;">To-Do List 4.0 Login</span>
+                                <br />
+                                <br />
+                                <img src="../../../dist/Images/LoginImage.png" style="width:304px;height:228px;" />
+                                <br />
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:5%;"></td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Username" [(ngModel)]="UserName" name="usernameInput" #usernameInput="ngModel">
+                                <br />
+                            </td>
+                            <td style="width:5%;"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:5%;"></td>
+                            <td>
+                                <input type="password" class="form-control" placeholder="Password" [(ngModel)]="Password" name="passwordInput" #passwordInput="ngModel">
+                                <br />
+                            </td>
+                            <td style="width:5%;"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width:5%;"></td>
+                            <td>
+                                <button type="submit" (click)="signIn" class="btn btn-default" style="width:100%;" name="submit" value="Login">Login</button>
+                            </td>
+                            <td style="width:5%;"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+    </div>
+</form>

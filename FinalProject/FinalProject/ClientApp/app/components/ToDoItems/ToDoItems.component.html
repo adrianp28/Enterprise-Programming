@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="col-12 text-center">
+        <span style="font-family:Calibri; font-size:xx-large; font-weight:bold;">To-Do List</span>
+        <hr />
+        <a href="AddItem/">
+            <button class="btn"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Add Item</button>
+        </a>
+        <button class="btn" (click)="sortByName()"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Sort by Name</button>
+    </div>
+    <div class="col-12">
+        <div class="alert alert-danger" *ngIf="!list">
+            No To-Do Lists
+        </div>
+        <div class="card" *ngIf="list && warning">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Enter</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of list">
+                    <tr *ngIf="item.status == 'Active' && checkRange(item.date, warning[0].days, warning[0].hours) == 'warn'" style="background-color:yellow;">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{getLocalDate(item.date)}}</td>
+                        <td><a href="Edit/{{item.id}}">Enter</a></td>
+                    </tr>
+                    <tr *ngIf="item.status == 'Active' && checkRange(item.date, warning[0].days, warning[0].hours) == 'danger'" style="background-color:red; color:white;">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{getLocalDate(item.date)}}</td>
+                        <td><a href="Edit/{{item.id}}">Enter</a></td>
+                    </tr>
+                    <tr *ngIf="item.status == 'Active' && checkRange(item.date, warning[0].days, warning[0].hours) == ''">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{getLocalDate(item.date)}}</td>
+                        <td><a href="Edit/{{item.id}}">Enter</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
