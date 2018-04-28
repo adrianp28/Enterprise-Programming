@@ -55,7 +55,8 @@ namespace FinalProject.Controllers
         {
             try
             {
-                var todo = this.dbContext.toDo.FirstOrDefault(p => p.ID == id);
+                var user = User.Identity.Name;
+                var todo = this.dbContext.toDo.Where(p => p.ID == id && p.User == user);
                 if (todo == null)
                 {
                     return StatusCode(StatusCodes.Status404NotFound);
@@ -84,7 +85,8 @@ namespace FinalProject.Controllers
         {
             try
             {
-                var todo = this.dbContext.toDo.FirstOrDefault(p => p.ID == id);
+                var user = User.Identity.Name;
+                var todo = this.dbContext.toDo.FirstOrDefault(p => p.ID == id && p.User == user);
                 if (todo == null)
                 {
                     return StatusCode(StatusCodes.Status404NotFound);
@@ -110,7 +112,8 @@ namespace FinalProject.Controllers
         {
             try
             {
-                var todo = this.dbContext.toDo.FirstOrDefault(p => p.ID == id);
+                var user = User.Identity.Name;
+                var todo = this.dbContext.toDo.FirstOrDefault(p => p.ID == id && p.User == user);
                 if (todo == null)
                 {
                     return StatusCode(StatusCodes.Status404NotFound);
