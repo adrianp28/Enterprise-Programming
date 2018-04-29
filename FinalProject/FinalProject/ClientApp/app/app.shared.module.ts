@@ -11,11 +11,13 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ToDoItemsComponent } from './components/ToDoItems/ToDoItemsComponent.component';
 import { ToDoItemsService } from './components/ToDoItems/ToDoItemsService.service';
+import { LoginService } from './components/Login/Login.service';
 import { EditToDoComponent } from './components/EditToDo/EditToDoComponent.component';
 import { AddItemComponent } from './components/AddItem/AddItem.component';
 import { CompletedComponent } from './components/completed/CompletedComponent.component';
 import { SettingsComponent } from './components/Settings/SettingsComponent.component';
 import { LoginComponent } from './components/Login/LoginComponent.component';
+import { RegisterComponent } from './components/Register/Register.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +31,8 @@ import { LoginComponent } from './components/Login/LoginComponent.component';
         AddItemComponent,
         CompletedComponent,
         SettingsComponent,
-        LoginComponent
+        LoginComponent,
+        RegisterComponent
     ],
 
     imports: [
@@ -47,11 +50,13 @@ import { LoginComponent } from './components/Login/LoginComponent.component';
             { path: 'AddItem', component: AddItemComponent },
             { path: 'completed', component: CompletedComponent },
             { path: 'Login', component: LoginComponent },
+            { path: 'Register', component: RegisterComponent },
             { path: '**', redirectTo: 'Login' }
         ])
     ],
     providers: [
-        ToDoItemsService
+        ToDoItemsService,
+        LoginService
     ]
 })
 export class AppModuleShared {

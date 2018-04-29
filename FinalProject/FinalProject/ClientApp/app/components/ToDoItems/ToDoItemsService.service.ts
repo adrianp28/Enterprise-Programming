@@ -4,6 +4,7 @@ import { Observable } from "rxjs/Observable";
 import { ToDoItemsInterface } from "./ToDoItemsInterface.interface";
 import { WarningInterface } from "./WarningInterface.interface";
 import { LoginInterface } from "../Login/Login.interface";
+import { RegisterInterface } from "../Register/Register.interface";
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -13,8 +14,11 @@ export class ToDoItemsService {
 
     signIn(user: LoginInterface) {
         console.log(user);
-        return this.http.post('api/user', user);
+        return this.http.post('/api/user/login', user);
             //.map(response => response.json()); 
+    }
+    register(register: RegisterInterface) {
+        return this.http.post('/api/user/register', register).map(response => response.json());
     }
     getItems(){
         return this.http.get('api/ToDo')

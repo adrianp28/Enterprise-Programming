@@ -1,0 +1,41 @@
+<html>
+<body>
+    <form #loginForm="ngForm" (ngSubmit)="register()">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Register</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <p class="text-center">Use the form below to register to the To-Do App.</p>
+
+                    <input type="text" class="form-control" placeholder="Email" [(ngModel)]="Email" name="emailInput" #emailInput="ngModel">
+                </div>
+                <div class="col-sm-6 col-sm-offset-3">
+
+                    <input type="text" class="form-control" placeholder="Username" [(ngModel)]="Username" name="usernameInput" #usernameInput="ngModel">
+                </div>
+                <div class="col-sm-6 col-sm-offset-3">
+
+                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="Password" name="passwordInput" #passwordInput="ngModel">
+                    8 Characters Long
+                </div>
+                <div class="col-sm-6 col-sm-offset-3" *ngIf="errorsInterface">
+                    <table >
+                        <tr *ngFor="let error of errorsInterface.errors">
+                            <td>
+                                {{error.description}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-6 col-sm-offset-3">
+                    <button type="submit" (click)="register" class="btn btn-default" style="width:100%;" name="submit" value="Login">Create</button>
+                </div>
+            </div><!--/col-sm-6-->
+        </div><!--/row-->
+        </form>
+</body>
+</html>

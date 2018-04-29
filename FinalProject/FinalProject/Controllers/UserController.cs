@@ -24,7 +24,7 @@ namespace FinalProject.Controllers
             this.userManager = userManager;
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public IActionResult Login([FromBody]LoginViewModel loginViewModel)
         {
             var result = signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, true, false).GetAwaiter().GetResult();
