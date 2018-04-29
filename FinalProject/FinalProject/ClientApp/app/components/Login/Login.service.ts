@@ -12,6 +12,7 @@ export class LoginService {
 
     signIn(user: LoginInterface) {
         console.log(user);
+        //console.log(this.http.post('/api/user/login', user).map(response => response.json()));
         return this.http.post('/api/user/login', user).map(response => response.json());
             //.map(response => response.json()); 
     }

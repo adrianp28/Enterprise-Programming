@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     public UserName: string;
     public Password: string;
     public err: ErrorLInterface;
+    public succeeded: string;
     constructor(private activeRoute: ActivatedRoute, private loginService: LoginService, private router: Router) {
     }
 
@@ -25,11 +26,12 @@ export class LoginComponent implements OnInit {
         
         let myUser = { UserName: this.UserName, Password: this.Password };
         console.log(myUser);
-        this.loginService.signIn(myUser).subscribe(results => this.err = results);
-        console.log(this.err.succeeded);
-        if (this.err.succeeded == true) {
-            this.router.navigate(['ToDoList']);
-        }
+        this.loginService.signIn(myUser).subscribe();
+        
+        //console.log(this.succeeded);
+        //if (this.err.succeeded == true) {
+        //    this.router.navigate(['ToDoList']);
+        //}
         //this.todoItemsService.register(myUser).subscribe(errors => { this.errorsInterface = errors; });
     }
 
