@@ -10,7 +10,7 @@ export class ElectionListService {
     constructor(private http: Http) { }
 
     getElections(){
-        return this.http.get('https://www.googleapis.com/civicinfo/v2/elections?key=AIzaSyDsbN4O4BdkYBlMAqZmBGpBqcoiQB2_fm4')
+        return this.http.get('https://www.googleapis.com/civicinfo/v2/elections?key=')
             .map(response => response.json());
 
     }
